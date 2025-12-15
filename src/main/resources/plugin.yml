@@ -1,0 +1,7 @@
+name: RecreatorLib
+version: ${project.version}
+main: com.fembuncollective.recreatorlib.RecreatorLib
+api-version: '1.21'
+author: MissAnilka
+description: A library plugin for MissAnilka's projects
+load: STARTUP
