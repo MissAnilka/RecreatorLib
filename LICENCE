@@ -1,0 +1,41 @@
+Non-Redistributable Source-Available License (NR-SAL) v1.0
+
+Copyright (c) 2025 The Fembun Collective™. All rights reserved.
+
+Definitions
+- "Software" means the contents of this repository, including source code, binaries, assets, and documentation.
+- "Repository" means the official repository maintained by the copyright owner at: https://github.com/MissAnilka/RecreatorLib (or any canonical URL you control).
+- "You" means the licensee (individual or organization) receiving rights under this license.
+
+License Grant
+Subject to the terms below, the copyright owner grants You a limited, non-exclusive, worldwide, royalty-free right to:
+- view, clone, fork, and modify the Software on GitHub;
+- use, run, and deploy the Software (including for commercial purposes) on servers You operate or administer;
+- submit changes to the Software to the copyright owner via pull requests or other contribution mechanisms described in CONTRIBUTING.md.
+
+Restrictions — NO REDISTRIBUTION
+Except as expressly permitted above, You may NOT, in source or binary form:
+- distribute, publish, mirror, package, sell, upload, post, or otherwise make available the Software (or any modified version) on third-party websites, marketplaces, public code hosting platforms, plugin directories, or repositories other than the official Repository, without prior express written permission from the copyright owner;
+- re-license the Software to third parties, or sublicense rights to third parties, except to the extent necessary to run the Software on servers You control;
+- remove or modify any copyright, trademark, or other proprietary notices in the Software.
+
+Contributions
+By submitting a pull request, patch, or other contribution to the Repository, You grant the copyright owner a perpetual, worldwide, non-exclusive, royalty-free, transferable, sublicensable license to use, reproduce, modify, distribute, and re-license Your contribution as part of the Software and in derivative works (including under different licensing terms).
+
+Enforcement and Remedies
+Any distribution contrary to the Restrictions is a material breach of this license and may result in termination of the granted rights and additional legal remedies.
+
+Termination
+This license terminates automatically if You breach any of its terms. Upon termination, You must cease all use and distribution of the Software and destroy or return all copies in Your possession.
+
+Disclaimer and No Warranty
+The Software is provided "AS IS", without warranty of any kind. In no event shall the copyright owner be liable for any damages arising out of the use or inability to use the Software.
+
+Governing Law and Forum
+This License is governed by and construed in accordance with the laws of the Slovak Republic. The parties submit to the exclusive jurisdiction of the courts of the Slovak Republic, with the courts seated in Bratislava being the competent courts to hear disputes arising out of or in connection with this License.
+
+Severability
+If any provision of this License is held to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+
+Contact
+To request redistribution rights or other permissions, contact: onlymissanilka@gmail.com.
