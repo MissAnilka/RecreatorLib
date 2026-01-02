@@ -5,6 +5,7 @@ import com.fembuncollective.recreatorlib.hopper.HopperAPI;
 import com.fembuncollective.recreatorlib.hopper.HopperManager;
 import com.fembuncollective.recreatorlib.hopper.WorkstationRegistry;
 import com.fembuncollective.recreatorlib.hopper.listener.HopperListener;
+import com.fembuncollective.recreatorlib.integration.IntegrationManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,6 +21,7 @@ public final class RecreatorLib extends JavaPlugin {
     private WorkstationRegistry workstationRegistry;
     private CustomWorkstationRegistry customWorkstationRegistry;
     private HopperAPI hopperAPI;
+    private IntegrationManager integrationManager;
 
     @Override
     public void onEnable() {
@@ -33,6 +35,10 @@ public final class RecreatorLib extends JavaPlugin {
         
         // Register listeners
         getServer().getPluginManager().registerEvents(new HopperListener(), this);
+        
+        // Initialize integrations
+        integrationManager = IntegrationManager.init(this);
+        integrationManager.loadIntegrations();
         
         // Print startup banner
         printStartupBanner();
@@ -73,6 +79,9 @@ public final class RecreatorLib extends JavaPlugin {
         }
         if (customWorkstationRegistry != null) {
             customWorkstationRegistry.clear();
+        }
+        if (integrationManager != null) {
+            integrationManager.unloadAll();
         }
         
         getLogger().info("RecreatorLib has been disabled!");
@@ -123,5 +132,14 @@ public final class RecreatorLib extends JavaPlugin {
      */
     public CustomWorkstationRegistry getCustomWorkstationRegistry() {
         return customWorkstationRegistry;
+    }
+
+    /**
+     * Gets the IntegrationManager for accessing plugin integrations.
+     * 
+     * @return The integration manager
+     */
+    public IntegrationManager getIntegrationManager() {
+        return integrationManager;
     }
 }

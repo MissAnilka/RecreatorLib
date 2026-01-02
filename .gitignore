@@ -10,8 +10,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files
-*.jar
+# Package Files (keep gradle-wrapper.jar)
 *.war
 *.nar
 *.ear
@@ -19,17 +18,13 @@
 *.tar.gz
 *.rar
 
-# Maven
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Maven (legacy)
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
 
 # IDE
 .idea/
@@ -39,7 +34,6 @@ buildNumber.properties
 .project
 .classpath
 .settings/
-.vscode/
 *.swp
 *.swo
 *~
@@ -47,3 +41,7 @@ buildNumber.properties
 # OS
 .DS_Store
 Thumbs.db
+
+# Runtime
+run/
+logs/
