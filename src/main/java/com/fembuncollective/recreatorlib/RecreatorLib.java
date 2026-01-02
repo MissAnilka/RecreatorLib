@@ -27,6 +27,9 @@ public final class RecreatorLib extends JavaPlugin {
     public void onEnable() {
         instance = this;
         
+        // Print startup banner first
+        printStartupBanner();
+        
         // Initialize managers
         hopperManager = HopperManager.getInstance();
         workstationRegistry = WorkstationRegistry.getInstance();
@@ -39,20 +42,26 @@ public final class RecreatorLib extends JavaPlugin {
         // Initialize integrations
         integrationManager = IntegrationManager.init(this);
         integrationManager.loadIntegrations();
-        
-        // Print startup banner
-        printStartupBanner();
     }
     
     private void printStartupBanner() {
-        String version = getDescription().getVersion();
+        String version = getPluginMeta().getVersion();
+        String versionText = "RecreatorLib v" + version;
+        int boxWidth = 52; // inner width between ║ characters
+        int padding = (boxWidth - versionText.length()) / 2;
+        String paddedVersion = " ".repeat(padding) + versionText + " ".repeat(boxWidth - padding - versionText.length());
+        
+        String authorText = "Made by MissAnilka & The Fembun Collective";
+        int authorPadding = (boxWidth - authorText.length()) / 2;
+        String paddedAuthor = " ".repeat(authorPadding) + authorText + " ".repeat(boxWidth - authorPadding - authorText.length());
+        
         String[] lines = {
                 "",
                 "  ╔════════════════════════════════════════════════════╗",
                 "  ║                                                    ║",
-                "  ║             RecreatorLib v" + version + centerPad(version, 23) + "║",
+                "  ║" + paddedVersion + "║",
                 "  ║                                                    ║",
-                "  ║  Made by MissAnilka & The Fembun Collective        ║",
+                "  ║" + paddedAuthor + "║",
                 "  ║                                                    ║",
                 "  ╚════════════════════════════════════════════════════╝",
                 ""
@@ -61,11 +70,6 @@ public final class RecreatorLib extends JavaPlugin {
         for (String line : lines) {
             getLogger().info(line);
         }
-    }
-    
-    private String centerPad(String version, int totalWidth) {
-        int padding = totalWidth - version.length();
-        return " ".repeat(Math.max(0, padding));
     }
 
     @Override
