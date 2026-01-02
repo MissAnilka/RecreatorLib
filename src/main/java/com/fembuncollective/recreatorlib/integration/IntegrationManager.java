@@ -2,6 +2,7 @@ package com.fembuncollective.recreatorlib.integration;
 
 import com.fembuncollective.recreatorlib.RecreatorLib;
 import com.fembuncollective.recreatorlib.integration.floodgate.FloodgateIntegration;
+import com.fembuncollective.recreatorlib.integration.placeholderapi.PlaceholderAPIIntegration;
 import org.bukkit.Bukkit;
 
 import java.util.HashMap;
@@ -51,9 +52,14 @@ public class IntegrationManager {
      * Checks for plugin presence before attempting to load.
      */
     public void loadIntegrations() {
-        // Floodgate Integration
+        // Floodgate Integration (load first so PAPI can use it)
         if (isPluginPresent("floodgate")) {
             loadIntegration("floodgate", new FloodgateIntegration());
+        }
+
+        // PlaceholderAPI Integration
+        if (isPluginPresent("PlaceholderAPI")) {
+            loadIntegration("placeholderapi", new PlaceholderAPIIntegration());
         }
 
         // Log integration status
@@ -113,6 +119,17 @@ public class IntegrationManager {
         return getIntegration("floodgate")
                 .filter(i -> i instanceof FloodgateIntegration)
                 .map(i -> (FloodgateIntegration) i);
+    }
+
+    /**
+     * Gets the PlaceholderAPI integration if available.
+     * 
+     * @return Optional containing the PlaceholderAPIIntegration if loaded
+     */
+    public Optional<PlaceholderAPIIntegration> getPlaceholderAPI() {
+        return getIntegration("placeholderapi")
+                .filter(i -> i instanceof PlaceholderAPIIntegration)
+                .map(i -> (PlaceholderAPIIntegration) i);
     }
 
     /**

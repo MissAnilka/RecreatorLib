@@ -9,3 +9,4 @@ load: STARTUP
 # Optional dependencies - features will be enabled if these plugins are present
 softdepend:
   - floodgate
+  - PlaceholderAPI

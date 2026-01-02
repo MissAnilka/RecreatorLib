@@ -18,6 +18,7 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.opencollab.dev/main/") // GeyserMC/Floodgate
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/") // PlaceholderAPI
 }
 
 dependencies {
@@ -29,6 +30,9 @@ dependencies {
     
     // Floodgate API (optional integration)
     compileOnly("org.geysermc.floodgate:api:2.2.2-SNAPSHOT")
+    
+    // PlaceholderAPI (optional integration)
+    compileOnly("me.clip:placeholderapi:2.11.6")
 }
 
 tasks {

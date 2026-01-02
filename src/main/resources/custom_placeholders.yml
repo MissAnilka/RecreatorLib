@@ -1,0 +1,117 @@
+# ============================================================
+#  RecreatorLib - Custom Placeholders Configuration
+# ============================================================
+#
+#  Define custom placeholders that transform output from other placeholders.
+#  All custom placeholders will be available as: %recreator_<name>%
+#
+#  HOW IT WORKS:
+#  1. Define a placeholder name (e.g., "server")
+#  2. Set the source placeholder to read from (e.g., "%server_name%")
+#  3. Create mappings to transform values
+#  4. Use your new placeholder: %recreator_server%
+#
+# ============================================================
+
+placeholders:
+
+  # Example: Transform server names to display names
+  # Usage: %recreator_server%
+  server:
+    source: "%server_name%"  # Source placeholder (from ServerUtils, RedisBungee, etc.)
+    default: "&7Unknown"     # Default if no mapping matches
+    mappings:
+      # Internal server name -> Display name
+      "eupaper": "&a[EU]"
+      "uspaper": "&b[US]"
+      "asiapaper": "&e[ASIA]"
+      "lobby": "&d[HUB]"
+      "hub": "&d[HUB]"
+      "survival": "&2[SMP]"
+      "creative": "&6[CREATIVE]"
+      "minigames": "&c[GAMES]"
+
+  # Example: Transform player's game mode
+  # Usage: %recreator_gamemode%
+  gamemode:
+    source: "%player_gamemode%"
+    default: "Survival"
+    mappings:
+      "SURVIVAL": "⚔ Survival"
+      "CREATIVE": "✨ Creative"
+      "ADVENTURE": "🗺 Adventure"
+      "SPECTATOR": "👁 Spectator"
+
+  # Example: Transform world names
+  # Usage: %recreator_world%
+  world:
+    source: "%player_world%"
+    default: "Overworld"
+    mappings:
+      "world": "&aOverworld"
+      "world_nether": "&cNether"
+      "world_the_end": "&5The End"
+      "spawn": "&eSpawn"
+      "plots": "&bPlots"
+
+  # Example: Simple platform indicator combining with Floodgate
+  # Usage: %recreator_platform_icon%
+  platform_icon:
+    source: "%recreator_platform%"  # Uses our built-in platform placeholder
+    default: "🖥"
+    mappings:
+      "Bedrock": "📱"
+      "Java": "🖥"
+
+  # Example: Using regex for pattern matching
+  # Usage: %recreator_region%
+  region:
+    source: "%server_name%"
+    default: "&7Global"
+    mappings: {}
+    regex_mappings:
+      # Match server names starting with eu/EU
+      "(?i)^eu.*": "&a[EU]"
+      # Match server names starting with us/US  
+      "(?i)^us.*": "&b[US]"
+      # Match server names starting with asia
+      "(?i)^asia.*": "&e[ASIA]"
+      # Match any lobby/hub server
+      "(?i).*(lobby|hub).*": "&d[HUB]"
+
+# ============================================================
+#  PROXY SERVER TRACKING
+# ============================================================
+#
+#  To track which server a player is on from a proxy like Velocity:
+#
+#  Option 1: ServerUtils Plugin
+#    - Install ServerUtils on your Velocity proxy
+#    - Install ServerUtils on your backend servers  
+#    - Use %server_name% as source placeholder
+#
+#  Option 2: RedisBungee / RedisBungee-Velocity
+#    - Use %redisbungee_server_id% or %redisbungee_server_name%
+#
+#  Option 3: Plan (Player Analytics)
+#    - Use %plan_server_name%
+#
+#  Option 4: Custom plugin messaging
+#    - Your proxy can send the server name to backend servers
+#    - A plugin can expose this as a placeholder
+#
+# ============================================================
+
+# ============================================================
+#  BUILT-IN RECREATORLIB PLACEHOLDERS
+# ============================================================
+#
+#  These are always available (no config needed):
+#
+#  %recreator_version%     - RecreatorLib version
+#  %recreator_is_bedrock%  - "true" or "false" 
+#  %recreator_platform%    - "Bedrock" or "Java"
+#  %recreator_device%      - Device OS (Android, iOS, Windows, etc.)
+#  %recreator_input%       - Input mode (TOUCH, CONTROLLER, KEYBOARD_MOUSE)
+#
+# ============================================================
