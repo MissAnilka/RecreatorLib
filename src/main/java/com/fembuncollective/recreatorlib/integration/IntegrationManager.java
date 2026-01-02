@@ -2,6 +2,7 @@ package com.fembuncollective.recreatorlib.integration;
 
 import com.fembuncollective.recreatorlib.RecreatorLib;
 import com.fembuncollective.recreatorlib.integration.floodgate.FloodgateIntegration;
+import com.fembuncollective.recreatorlib.integration.luckperms.LuckPermsIntegration;
 import com.fembuncollective.recreatorlib.integration.placeholderapi.PlaceholderAPIIntegration;
 import org.bukkit.Bukkit;
 
@@ -60,6 +61,11 @@ public class IntegrationManager {
         // PlaceholderAPI Integration
         if (isPluginPresent("PlaceholderAPI")) {
             loadIntegration("placeholderapi", new PlaceholderAPIIntegration());
+        }
+
+        // LuckPerms Integration
+        if (isPluginPresent("LuckPerms")) {
+            loadIntegration("luckperms", new LuckPermsIntegration());
         }
 
         // Log integration status
@@ -130,6 +136,17 @@ public class IntegrationManager {
         return getIntegration("placeholderapi")
                 .filter(i -> i instanceof PlaceholderAPIIntegration)
                 .map(i -> (PlaceholderAPIIntegration) i);
+    }
+
+    /**
+     * Gets the LuckPerms integration if available.
+     * 
+     * @return Optional containing the LuckPermsIntegration if loaded
+     */
+    public Optional<LuckPermsIntegration> getLuckPerms() {
+        return getIntegration("luckperms")
+                .filter(i -> i instanceof LuckPermsIntegration)
+                .map(i -> (LuckPermsIntegration) i);
     }
 
     /**

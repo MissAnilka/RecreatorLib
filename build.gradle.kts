@@ -33,6 +33,9 @@ dependencies {
     
     // PlaceholderAPI (optional integration)
     compileOnly("me.clip:placeholderapi:2.11.6")
+    
+    // LuckPerms API (optional integration)
+    compileOnly("net.luckperms:api:5.4")
 }
 
 tasks {
