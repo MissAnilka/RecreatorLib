@@ -6,6 +6,7 @@ import com.fembuncollective.recreatorlib.hopper.HopperManager;
 import com.fembuncollective.recreatorlib.hopper.WorkstationRegistry;
 import com.fembuncollective.recreatorlib.hopper.listener.HopperListener;
 import com.fembuncollective.recreatorlib.integration.IntegrationManager;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -42,6 +43,10 @@ public final class RecreatorLib extends JavaPlugin {
         // Initialize integrations
         integrationManager = IntegrationManager.init(this);
         integrationManager.loadIntegrations();
+        
+        // Initialize bStats metrics
+        int pluginId = 28692;
+        Metrics metrics = new Metrics(this, pluginId);
     }
     
     private void printStartupBanner() {

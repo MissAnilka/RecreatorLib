@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
     id("io.papermc.paperweight.userdev") version "1.7.1" apply false
     id("xyz.jpenilla.run-paper") version "2.3.0"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.gradleup.shadow") version "8.3.5"
 }
 
 group = "com.fembuncollective"
@@ -36,6 +36,9 @@ dependencies {
     
     // LuckPerms API (optional integration)
     compileOnly("net.luckperms:api:5.4")
+    
+    // bStats Metrics
+    implementation("org.bstats:bstats-bukkit:3.1.0")
 }
 
 tasks {
@@ -63,6 +66,10 @@ tasks {
     shadowJar {
         archiveClassifier.set("")
         archiveBaseName.set("RecreatorLib")
+        
+        configurations = listOf(project.configurations.runtimeClasspath.get())
+        dependencies { exclude { it.moduleGroup != "org.bstats" } }
+        relocate("org.bstats", "${project.group}")
     }
     
     build {
